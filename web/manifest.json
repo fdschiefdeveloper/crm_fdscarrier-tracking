@@ -1,0 +1,35 @@
+{
+    "name": "FDS",
+    "short_name": "FDS",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "FDS crm proyect",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "../photos/logocircular.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "../photos/logocircular.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "../photos/logocircular.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "../photos/logocircular.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
