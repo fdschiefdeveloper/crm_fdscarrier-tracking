@@ -167,8 +167,7 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
               border: Border.all(color: verdeDefault, width: 2),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            child: Stack(
               children: [
                 Column(
                   children: [
@@ -185,26 +184,64 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
                       child: Text(
                         contentMap[key]![1],
                         style: FontStylesMonserrat.titleH1,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Container(
+                      constraints: const BoxConstraints(minHeight: 120),
+                      color: Colors.transparent,
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        infoTracking[0][key],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Color.fromARGB(255, 60, 60, 60),
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "Montserrat",
+                        ),
                       ),
                     ),
                   ],
                 ),
                 Container(
-                  constraints: const BoxConstraints(minHeight: 120),
                   color: Colors.transparent,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                    infoTracking[0][key],
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Color.fromARGB(255, 60, 60, 60),
-                      fontWeight: FontWeight.w700,
-                      fontFamily: "Montserrat",
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ///// WIDGET CREADO PARA AJUSTAR ICONO EN STACK /////
+                      Container(
+                        padding: const EdgeInsets.fromLTRB(0, 40, 0, 15),
+                        alignment: Alignment.center,
+                        child: Text(
+                          contentMap[key]![1],
+                          style: const TextStyle(
+                            fontSize: 24,
+                            color: Colors.transparent,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Montserrat",
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 5),
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: verdeDefault, width: 3),
+                            color: Colors.white,
+                            shape: BoxShape.circle),
+                        child: Icon(
+                          contentMap[key]![0],
+                          size: 25,
+                          color: verdeDefault,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                )
+                // )
               ],
             ),
           ),
@@ -224,8 +261,7 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
                 border: Border.all(color: verdeDefault, width: 2),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+              child: Stack(
                 children: [
                   Column(
                     children: [
@@ -242,26 +278,64 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
                         child: Text(
                           contentMap[key]![1],
                           style: FontStylesMonserrat.titleH1,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Container(
+                        constraints: const BoxConstraints(minHeight: 120),
+                        color: Colors.transparent,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          infoTracking[i][key],
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 60, 60, 60),
+                            fontWeight: FontWeight.w700,
+                            fontFamily: "Montserrat",
+                          ),
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    constraints: const BoxConstraints(minHeight: 120),
                     color: Colors.transparent,
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      infoTracking[i][key],
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Color.fromARGB(255, 60, 60, 60),
-                        fontWeight: FontWeight.w700,
-                        fontFamily: "Montserrat",
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ///// WIDGET CREADO PARA AJUSTAR ICONO EN STACK /////
+                        Container(
+                          padding: const EdgeInsets.fromLTRB(0, 40, 0, 15),
+                          alignment: Alignment.center,
+                          child: Text(
+                            contentMap[key]![1],
+                            style: const TextStyle(
+                              fontSize: 24,
+                              color: Colors.transparent,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "Montserrat",
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 5),
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: verdeDefault, width: 3),
+                              color: Colors.white,
+                              shape: BoxShape.circle),
+                          child: Icon(
+                            contentMap[key]![0],
+                            size: 25,
+                            color: verdeDefault,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
+                  )
+                  // )
                 ],
               ),
             ),
@@ -312,7 +386,10 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
       ),
       margin: const EdgeInsets.only(top: 50),
       child: infoTracking.length <= 1
-          ? Wrap(spacing: 10, children: listIndicators)
+          ? Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 10,
+              children: listIndicators)
           : Column(
               children: [
                 const Padding(
