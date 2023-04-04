@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-
 String ip = "https://api.fdscarrier.com";
 
 Future getTrackingInfo(String where) async {
@@ -17,11 +16,9 @@ Future getTrackingInfo(String where) async {
       <String, String>{'Where': where},
     ),
   );
-
   if (jsonDecode(response.body)['error'] == "") {
     return jsonDecode(response.body)['result'];
   } else {
     return [];
   }
 }
-
