@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "FDS Carrier",
+      title: "USA Freight system",
       initialRoute: "/",
       theme: ThemeData(
         fontFamily: "Monserrat",

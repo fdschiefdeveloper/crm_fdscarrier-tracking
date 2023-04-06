@@ -4,21 +4,21 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-String ip = "https://api.fdscarrier.com";
+//String ip = "https://api.fdscarrier.com";
+String ip = "http://127.0.0.1:4000";
 
-Future getTrackingInfo(String where) async {
+Future<List> getTrackingInfo(String where) async {
   final response = await http.post(
-    Uri.parse(ip + '/api/getTracking'),
+    Uri.parse('$ip/api/getTracking'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Credentials': 'true',
     },
     body: jsonEncode(
       <String, String>{'Where': where},
     ),
   );
-  if (jsonDecode(response.body)['error'] == "") {
-    return jsonDecode(response.body)['result'];
-  } else {
-    return [];
-  }
+
+  return jsonDecode(response.body)["result"];
 }

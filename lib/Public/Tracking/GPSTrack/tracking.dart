@@ -51,7 +51,7 @@ class _TrackingState extends State<Tracking> {
 
   Container logo = Container(
     margin: const EdgeInsets.symmetric(vertical: 50),
-    constraints: const BoxConstraints(maxHeight: 150, maxWidth: 150),
+    constraints: const BoxConstraints(maxHeight: 150, maxWidth: 250),
     child: Image.asset(logoFDS),
   );
 
@@ -59,11 +59,14 @@ class _TrackingState extends State<Tracking> {
   Widget build(BuildContext context) {
     // Responsive responsive = Responsive(context);
     return Scaffold(
-      backgroundColor: greyDefault,
+      //  backgroundColor: greyDefault,
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                opacity: 0.6, image: AssetImage(background), fit: BoxFit.fill)),
+                scale: 3.25,
+                repeat: ImageRepeat.repeat,
+                opacity: 0.05,
+                image: AssetImage(logoFDS))),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: ScrollBarDefault(
@@ -103,7 +106,7 @@ class IndicatorsTracking extends StatefulWidget
       : super(key: key);
 
   @override
-  State<IndicatorsTracking> createState() => _IndicadorestorsingState();
+  State<IndicatorsTracking> createState() => _IndicatorsTrackingState();
 
   @override
   Function selfvalidateAccions;
@@ -115,7 +118,7 @@ class IndicatorsTracking extends StatefulWidget
   String searchValue;
 }
 
-class _IndicadorestorsingState extends State<IndicatorsTracking> {
+class _IndicatorsTrackingState extends State<IndicatorsTracking> {
   Map<String, List<dynamic>> contentMap = {
     "Tracking_Code": [Icons.numbers, "Tracking ID"],
     "Driver_Name": [Icons.person, "Driver Name"],
@@ -139,14 +142,14 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
               Icon(
                 Icons.warning_rounded,
                 size: 100,
-                color: verdeDefault,
+                color: colorPrimario,
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20, left: 10, right: 10),
                 child: Text(
                   "Tracking ID not founded. Please check your code or contact your dispatcher.",
                   style: TextStyle(
-                      color: verdeDefault,
+                      color: colorTerciario,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic),
@@ -164,7 +167,7 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
             width: 200,
             constraints: const BoxConstraints(minHeight: 200),
             decoration: BoxDecoration(
-              border: Border.all(color: verdeDefault, width: 2),
+              border: Border.all(color: colorTerciario, width: 2),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Stack(
@@ -173,7 +176,7 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
                   children: [
                     Container(
                       decoration: const BoxDecoration(
-                          color: verdeDefault,
+                          color: colorTerciario,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(8),
                             topRight: Radius.circular(8),
@@ -229,13 +232,13 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
                         margin: const EdgeInsets.only(left: 5),
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                            border: Border.all(color: verdeDefault, width: 3),
+                            border: Border.all(color: colorTerciario, width: 3),
                             color: Colors.white,
                             shape: BoxShape.circle),
                         child: Icon(
                           contentMap[key]![0],
                           size: 25,
-                          color: verdeDefault,
+                          color: colorPrimario,
                         ),
                       ),
                     ],
@@ -258,7 +261,7 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
               width: 200,
               constraints: const BoxConstraints(minHeight: 200),
               decoration: BoxDecoration(
-                border: Border.all(color: verdeDefault, width: 2),
+                border: Border.all(color: colorTerciario, width: 2),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Stack(
@@ -267,7 +270,7 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
                     children: [
                       Container(
                         decoration: const BoxDecoration(
-                            color: verdeDefault,
+                            color: colorTerciario,
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(8),
                               topRight: Radius.circular(8),
@@ -323,13 +326,14 @@ class _IndicadorestorsingState extends State<IndicatorsTracking> {
                           margin: const EdgeInsets.only(left: 5),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              border: Border.all(color: verdeDefault, width: 3),
+                              border:
+                                  Border.all(color: colorTerciario, width: 3),
                               color: Colors.white,
                               shape: BoxShape.circle),
                           child: Icon(
                             contentMap[key]![0],
                             size: 25,
-                            color: verdeDefault,
+                            color: colorPrimario,
                           ),
                         ),
                       ],
@@ -430,6 +434,7 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   void initState() {
+    widget.searchValue = "764328271485";
     super.initState();
   }
 
@@ -446,7 +451,7 @@ class _SearchBarState extends State<SearchBar> {
       decoration: responsive.isMobile
           ? const BoxDecoration(color: Colors.transparent)
           : BoxDecoration(
-              color: verdeDefault,
+              color: colorPrimario,
               boxShadow: const [BoxShadow(blurRadius: 0.5)],
               borderRadius: BorderRadius.circular(10),
             ),
@@ -464,7 +469,7 @@ class _SearchBarState extends State<SearchBar> {
                   : EdgeInsets.zero,
               decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(width: 1, color: verdeDefault),
+                  border: Border.all(width: 1, color: colorPrimario),
                   borderRadius: BorderRadius.circular(10)),
               child: TextFormField(
                   onFieldSubmitted: (value) {
@@ -506,7 +511,7 @@ class _SearchBarState extends State<SearchBar> {
                     margin: const EdgeInsets.only(left: 10),
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: verdeDefault,
+                      color: colorSecundario,
                     ),
                     child: IconButton(
                       mouseCursor: SystemMouseCursors.click,
