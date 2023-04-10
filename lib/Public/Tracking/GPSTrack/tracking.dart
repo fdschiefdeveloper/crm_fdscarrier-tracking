@@ -21,10 +21,6 @@ class Tracking extends StatefulWidget {
 }
 
 class _TrackingState extends State<Tracking> {
-  refresh() {
-    setState(() {});
-  }
-
   @override
   void initState() {
     infoTracking = [];
@@ -51,7 +47,7 @@ class _TrackingState extends State<Tracking> {
 
   Container logo = Container(
     margin: const EdgeInsets.symmetric(vertical: 50),
-    constraints: const BoxConstraints(maxHeight: 150, maxWidth: 250),
+    constraints: const BoxConstraints(maxHeight: 150, maxWidth: 350),
     child: Image.asset(logoFDS),
   );
 
@@ -66,7 +62,7 @@ class _TrackingState extends State<Tracking> {
                 scale: 3.25,
                 repeat: ImageRepeat.repeat,
                 opacity: 0.05,
-                image: AssetImage(logoFDS))),
+                image: AssetImage(background))),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: ScrollBarDefault(
@@ -168,7 +164,7 @@ class _IndicatorsTrackingState extends State<IndicatorsTracking> {
             constraints: const BoxConstraints(minHeight: 200),
             decoration: BoxDecoration(
               border: Border.all(color: colorTerciario, width: 2),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(5),
             ),
             child: Stack(
               children: [
@@ -178,8 +174,8 @@ class _IndicatorsTrackingState extends State<IndicatorsTracking> {
                       decoration: const BoxDecoration(
                           color: colorTerciario,
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(8),
-                            topRight: Radius.circular(8),
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.circular(5),
                           )),
                       padding: const EdgeInsets.fromLTRB(0, 40, 0, 40),
                       margin: const EdgeInsets.only(bottom: 10),
@@ -200,7 +196,7 @@ class _IndicatorsTrackingState extends State<IndicatorsTracking> {
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: 18,
-                          color: Color.fromARGB(255, 60, 60, 60),
+                          color: Colors.black,
                           fontWeight: FontWeight.w700,
                           fontFamily: "Montserrat",
                         ),
@@ -238,7 +234,7 @@ class _IndicatorsTrackingState extends State<IndicatorsTracking> {
                         child: Icon(
                           contentMap[key]![0],
                           size: 25,
-                          color: colorPrimario,
+                          color: Colors.black,
                         ),
                       ),
                     ],
@@ -262,7 +258,7 @@ class _IndicatorsTrackingState extends State<IndicatorsTracking> {
               constraints: const BoxConstraints(minHeight: 200),
               decoration: BoxDecoration(
                 border: Border.all(color: colorTerciario, width: 2),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Stack(
                 children: [
@@ -272,8 +268,8 @@ class _IndicatorsTrackingState extends State<IndicatorsTracking> {
                         decoration: const BoxDecoration(
                             color: colorTerciario,
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8),
+                              topLeft: Radius.circular(5),
+                              topRight: Radius.circular(5),
                             )),
                         padding: const EdgeInsets.fromLTRB(0, 40, 0, 40),
                         margin: const EdgeInsets.only(bottom: 10),
@@ -333,7 +329,7 @@ class _IndicatorsTrackingState extends State<IndicatorsTracking> {
                           child: Icon(
                             contentMap[key]![0],
                             size: 25,
-                            color: colorPrimario,
+                            color: Colors.black,
                           ),
                         ),
                       ],
@@ -376,37 +372,42 @@ class _IndicatorsTrackingState extends State<IndicatorsTracking> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: const [
-          BoxShadow(
-              color: Color.fromARGB(255, 156, 156, 156),
-              offset: Offset(0, 4),
-              spreadRadius: 0,
-              blurRadius: 8)
-        ],
-      ),
-      margin: const EdgeInsets.only(top: 50),
-      child: infoTracking.length <= 1
-          ? Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 10,
-              children: listIndicators)
-          : Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 30, top: 20),
-                  child: Text(
-                    "Drivers",
-                    style: FontStylesMonserrat.titleInspection,
-                  ),
-                ),
-                ...listIndicators
-              ],
-            ),
-    );
+    return infoTracking.isEmpty && widget.searchValue.isEmpty
+        ? const SizedBox()
+        : Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: const [
+                  BoxShadow(
+                      color: Color.fromARGB(255, 163, 163, 163),
+                      spreadRadius: 5,
+                      blurRadius: 10)
+                ]),
+            margin: const EdgeInsets.only(top: 100),
+            child: infoTracking.length == 1
+                ? Container(
+                    padding: const EdgeInsets.all(30),
+                    child: Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 10,
+                        children: listIndicators),
+                  )
+                : infoTracking.isNotEmpty
+                    ? Column(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 30, top: 20),
+                            child: Text(
+                              "Drivers",
+                              style: FontStylesMonserrat.titleInspection,
+                            ),
+                          ),
+                          ...listIndicators
+                        ],
+                      )
+                    : null,
+          );
   }
 }
 
@@ -453,7 +454,7 @@ class _SearchBarState extends State<SearchBar> {
           : BoxDecoration(
               color: colorPrimario,
               boxShadow: const [BoxShadow(blurRadius: 0.5)],
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(5),
             ),
       child: Row(
         mainAxisAlignment: responsive.isMobile
@@ -470,7 +471,7 @@ class _SearchBarState extends State<SearchBar> {
               decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(width: 1, color: colorPrimario),
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(5)),
               child: TextFormField(
                   onFieldSubmitted: (value) {
                     widget.validateAccions();
@@ -542,8 +543,8 @@ class _SearchBarState extends State<SearchBar> {
                       "SEARCH",
                       style: TextStyle(
                           fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w300,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
                           fontFamily: "Montserrat",
                           letterSpacing: 2),
                     ),

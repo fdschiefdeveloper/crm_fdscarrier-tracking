@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // MAIN COLORS
-const colorPrimario = Color.fromRGBO(183, 0, 0, 1);
+const colorPrimario = Color.fromRGBO(181, 197, 201, 1);
 const colorSecundario = Color.fromRGBO(73, 85, 92, 1);
 const colorTerciario = Color.fromRGBO(163, 182, 187, 1);
 //245 2 2
@@ -13,8 +13,8 @@ const colorTerciario = Color.fromRGBO(163, 182, 187, 1);
 //FONT COLORS
 
 //IMAGES
-const background = "Photos/backgroundlines.png";
-const logoFDS = "Photos/logo.png";
+const background = "Photos/background.png";
+const logoFDS = "Photos/Imagotipo.png";
 const logoloading = "Photos/Logo-loading.gif";
 //Elements for Dashboard
 
